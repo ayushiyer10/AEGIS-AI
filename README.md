@@ -250,6 +250,131 @@ Aggregate intelligence including:
 
 ---
 
+## Current Limitations
+
+<div align="center">
+
+| Limitation | Description | Impact |
+|------------|-------------|--------|
+| **Windows Only** | Agent currently supports Windows OS only | Linux/macOS users cannot run the input agent |
+| **Local Network** | Designed for LAN/local server deployment | Not optimized for cloud-scale distribution |
+| **Single Game Focus** | Optimized for FPS-style games | May require tuning for other game genres |
+| **Manual Training** | ML model requires manual retraining | New cheat patterns need dataset updates |
+| **No Kernel-Level** | User-mode detection only | Cannot detect kernel-level cheats |
+| **Limited Encryption** | Basic API security | Production deployment needs enhanced security |
+
+</div>
+
+> **Note:** These limitations are actively being addressed in the roadmap below.
+
+---
+
+## Future Scope & Roadmap
+
+<div align="center">
+
+```
+                           AEGIS AI ROADMAP
+    ════════════════════════════════════════════════════════
+
+    Q2 2026                    Q3 2026                    Q4 2026
+    ────────                   ────────                   ────────
+    ┌──────────┐              ┌──────────┐              ┌──────────┐
+    │ Cross-   │              │ Cloud    │              │ Kernel   │
+    │ Platform │─────────────▶│ Deploy   │─────────────▶│ Driver   │
+    │ Agent    │              │ Ready    │              │ Module   │
+    └──────────┘              └──────────┘              └──────────┘
+         │                         │                         │
+         ▼                         ▼                         ▼
+    Linux/macOS            AWS/Azure/GCP              Ring-0 Detection
+    Support                Scalability                VAC-style Protection
+```
+
+</div>
+
+### Planned Features
+
+<table>
+<tr>
+<td width="50%">
+
+#### Version 2.0
+- [ ] **Cross-Platform Agent** - Linux & macOS support
+- [ ] **Deep Learning Model** - LSTM/Transformer for sequence analysis
+- [ ] **Real-time Model Updates** - Online learning without restarts
+- [ ] **Enhanced Encryption** - TLS 1.3 + JWT authentication
+
+</td>
+<td width="50%">
+
+#### Version 3.0
+- [ ] **Cloud Deployment** - Kubernetes-ready microservices
+- [ ] **Game SDK Integration** - Unity/Unreal Engine plugins
+- [ ] **Mobile Dashboard** - iOS/Android monitoring app
+- [ ] **Automated Ban System** - Configurable auto-enforcement
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+#### Version 4.0
+- [ ] **Kernel-Level Driver** - Windows kernel module for deeper detection
+- [ ] **Hardware Fingerprinting** - HWID-based tracking
+- [ ] **Neural Network Ensemble** - Multiple model voting system
+- [ ] **Replay Analysis** - Post-game footage analysis with CV
+
+</td>
+<td width="50%">
+
+#### Long-Term Vision
+- [ ] **Multi-Game Support** - Universal detection profiles
+- [ ] **Community Reports** - Player-driven flagging system
+- [ ] **API Marketplace** - Third-party integration ecosystem
+- [ ] **Anti-Cheat-as-a-Service** - SaaS platform for game developers
+
+</td>
+</tr>
+</table>
+
+### Research Areas
+
+| Area | Description | Status |
+|------|-------------|--------|
+| **Transformer Models** | Attention-based sequence modeling for input patterns | 🔬 Research |
+| **Federated Learning** | Privacy-preserving distributed model training | 📋 Planned |
+| **Graph Neural Networks** | Player interaction network analysis | 💡 Concept |
+| **Adversarial Robustness** | Defending against ML model attacks | 🔬 Research |
+
+---
+
+## Contributors
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center">
+<a href="https://github.com/ayushiyer10">
+<img src="https://github.com/ayushiyer10.png" width="100px;" alt="Ayush Iyer"/><br />
+<sub><b>Ayush Iyer</b></sub>
+</a><br />
+<sub>🏗️ Project Lead & Backend</sub>
+</td>
+<td align="center">
+<a href="https://github.com/MeetChaudhary007">
+<img src="https://github.com/MeetChaudhary007.png" width="100px;" alt="Meet Chaudhary"/><br />
+<sub><b>Meet Chaudhary</b></sub>
+</a><br />
+<sub>🎨 UI/UX Design & Frontend</sub>
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -272,12 +397,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000">
 
-### Built with precision by Ayush Iyer
+### Built with ❤️ by Ayush Iyer & Meet Chaudhary
 
 <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=18&pause=1000&color=22D3EE&center=true&vCenter=true&width=435&lines=Protecting+fair+play;One+detection+at+a+time" alt="Typing SVG" />
 
 <br/>
 
-[![GitHub](https://img.shields.io/badge/GitHub-ayushiyer10-181717?style=for-the-badge&logo=github)](https://github.com/ayushiyer10)
+[![GitHub](https://img.shields.io/badge/Ayush_Iyer-181717?style=for-the-badge&logo=github)](https://github.com/ayushiyer10)
+[![GitHub](https://img.shields.io/badge/Meet_Chaudhary-181717?style=for-the-badge&logo=github)](https://github.com/MeetChaudhary007)
 
 </div>
