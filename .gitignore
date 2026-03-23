@@ -61,3 +61,10 @@ __pycache__/
 engine/src/main/resources/static_backup/
 engine/src/main/resources/static_current/
 anticheat-ui/dist_current/
+
+# Local documentation and scripts
+STABLE_SNAPSHOT.md
+docs/
+create_docx.sh
+generate_srs.py
+update_srs_complete.py
