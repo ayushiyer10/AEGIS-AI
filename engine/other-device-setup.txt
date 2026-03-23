@@ -1,0 +1,81 @@
+CROSS-DEVICE LAUNCH + MONITORING GUIDE
+=====================================
+
+Goal:
+Run the dashboard/backend on your main device and run the agent on another device, then monitor that remote device from the main dashboard.
+
+MAIN DEVICE (Monitoring Laptop)
+-------------------------------
+1) Open PowerShell in project root:
+cd "C:\Users\Ayush Iyer\Desktop\Anti Cheat"
+
+2) Start backend + dashboard:
+cd engine
+.\mvnw spring-boot:run
+
+3) Find your main device LAN IP (example: 192.168.1.20):
+ipconfig
+Use the IPv4 Address of your active Wi-Fi/Ethernet adapter.
+
+4) Keep this URL ready (replace with your IP):
+http://<MAIN_DEVICE_IP>:8080
+
+5) Allow inbound firewall for port 8080 if needed:
+- Open "Windows Defender Firewall with Advanced Security"
+- Add inbound rule for TCP 8080
+
+REMOTE DEVICE (Agent Device)
+----------------------------
+1) Copy folder `anticheat-agent-python` to remote device.
+
+2) Open terminal in that folder and install deps:
+pip install -r requirements.txt
+
+3) Point agent to main device backend:
+$env:AC_SERVER_URL="http://<MAIN_DEVICE_IP>:8080"
+
+4) Run agent (console mode):
+python input_capture.py
+
+5) Optional tray mode:
+python tray_launcher.py
+
+VERIFY FROM MAIN DEVICE
+-----------------------
+1) Open dashboard on main device:
+http://localhost:8080
+
+2) Open devices API:
+http://localhost:8080/api/devices
+You should see remote `deviceId`, status, lastSeen.
+
+3) Check remote live data (replace id):
+http://localhost:8080/api/devices/<deviceId>/live
+
+4) Check snapshots for remote device:
+http://localhost:8080/api/devices/<deviceId>/snapshots?limit=20
+
+HOW TO CONFIRM AGENT IS REALLY RUNNING
+--------------------------------------
+On remote device:
+- Task Manager should show python.exe (or packaged agent exe)
+- API heartbeat updates `lastSeen` every few seconds in /api/devices
+- Mouse/keyboard activity updates velocity and event lists in live endpoint
+
+IF REMOTE DEVICE DOES NOT APPEAR
+--------------------------------
+1) Verify both devices are on same network.
+2) Ping main device from remote:
+ping <MAIN_DEVICE_IP>
+3) Confirm AC_SERVER_URL is correct on remote.
+4) Confirm backend is reachable from remote browser:
+http://<MAIN_DEVICE_IP>:8080/api/health
+5) Check firewall/antivirus blocking Python or port 8080.
+
+OPTIONAL: AUTO START AGENT ON REMOTE WINDOWS LOGIN
+--------------------------------------------------
+From project root on remote device:
+powershell -ExecutionPolicy Bypass -File scripts\register-agent-startup.ps1 -AgentExePath "<FULL_PATH_TO_AGENT_EXE>"
+
+To remove startup task:
+powershell -ExecutionPolicy Bypass -File scripts\register-agent-startup.ps1 -Remove

@@ -1,0 +1,220 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   AEGIS ANTI-CHEAT - SPLASH SCREEN
+   Clean Boot Sequence
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.splash-root {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+  color: #e0e0e0;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* BACKGROUND ELEMENTS */
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 10, 84, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 10, 84, 0.05) 1px, transparent 1px);
+  background-size: 100px 100px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+}
+
+/* TERMINAL */
+.terminal {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  font-size: 12px;
+  line-height: 1.8;
+  z-index: 10;
+  opacity: 0.8;
+}
+
+.boot-line {
+  color: #51cf66;
+  opacity: 0;
+  animation: line-fade 0.3s ease forwards;
+  margin-bottom: 4px;
+}
+
+.boot-line:nth-child(1) { animation-delay: 0.2s; }
+.boot-line:nth-child(2) { animation-delay: 0.4s; }
+.boot-line:nth-child(3) { animation-delay: 0.6s; }
+.boot-line:nth-child(4) { animation-delay: 0.8s; }
+.boot-line:nth-child(5) { animation-delay: 1s; }
+.boot-line:nth-child(6) { animation-delay: 1.2s; }
+.boot-line:nth-child(7) { animation-delay: 1.4s; }
+
+@keyframes line-fade {
+  to { opacity: 1; }
+}
+
+.typing {
+  color: #ffd700;
+}
+
+.cursor {
+  animation: blink 1s step-end infinite;
+  color: #51cf66;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* LOGO CONTAINER */
+.logo-container {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+}
+
+.logo-core {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #ff0a54 0%, #ff6a00 100%);
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 36px;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 4px 20px rgba(255, 10, 84, 0.3);
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.logo-container h1 {
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  color: white;
+}
+
+.logo-container h1 span {
+  background: linear-gradient(90deg, #ff0a54 0%, #ff6a00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-container p {
+  font-size: 11px;
+  color: #a0a0b8;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* PROGRESS BAR */
+.progress-bar-container {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  max-width: 90%;
+}
+
+.progress-bar {
+  height: 6px;
+  background: rgba(255, 10, 84, 0.1);
+  border-radius: 3px;
+  border: 1px solid rgba(255, 10, 84, 0.2);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar > div {
+  height: 100%;
+  background: linear-gradient(90deg, #ff0a54 0%, #ff6a00 100%);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.15s ease;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 11px;
+  color: #a0a0b8;
+  letter-spacing: 1px;
+}
+
+/* STATUS */
+.splash-root .status-indicator {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #6b7280;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .terminal {
+    font-size: 10px;
+    top: 8%;
+    left: 3%;
+  }
+
+  .logo-core {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+
+  .logo-container h1 {
+    font-size: 24px;
+  }
+
+  .progress-bar-container {
+    width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal {
+    display: none;
+  }
+
+  .logo-core {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  .logo-container h1 {
+    font-size: 20px;
+  }
+
+  .progress-bar-container {
+    width: 80%;
+    bottom: 20%;
+  }
+}

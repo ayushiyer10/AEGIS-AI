@@ -1,0 +1,81 @@
+STEP 1 (Terminal 1): Start Engine Backend (API + UI host)
+cd "C:\Users\Ayush Iyer\Desktop\Anti Cheat\engine"
+.\mvnw spring-boot:run
+
+STEP 2 (Terminal 2): Start Python Input Capture
+cd "C:\Users\Ayush Iyer\Desktop\Anti Cheat\anticheat-agent-python"
+python input_capture.py
+
+STEP 3 (Open UI)
+Option A (Browser):
+http://localhost:8080
+
+Option B (Desktop Window / JavaFX):
+cd "C:\Users\Ayush Iyer\Desktop\Anti Cheat\engine"
+.\mvnw -DskipTests package
+java -jar target\engine-0.0.1-SNAPSHOT.jar
+
+STEP 4 (Verify Backend Is Running)
+Invoke-RestMethod -Uri http://localhost:8080/api/health -Method GET
+
+STEP 5 (Check Live Data Stream)
+Invoke-RestMethod -Uri http://localhost:8080/api/live -Method GET | ConvertTo-Json -Depth 8
+
+STEP 6 (Check Saved Snapshots)
+Invoke-RestMethod -Uri "http://localhost:8080/api/live/snapshots?limit=10" -Method GET | ConvertTo-Json -Depth 8
+
+============================================================
+PACKAGED EXE WORKFLOW (MASTER CONTROL + BACKGROUND AGENT)
+============================================================
+
+STEP A1 (Build Executables)
+cd "C:\Users\Ayush Iyer\Desktop\Anti Cheat"
+powershell -ExecutionPolicy Bypass -File scripts\package-windows.ps1
+
+STEP A2 (Output Location)
+C:\Users\Ayush Iyer\Desktop\Anti Cheat\dist\windows
+
+STEP A3 (Start Both Apps Together)
+cd "C:\Users\Ayush Iyer\Desktop\Anti Cheat\dist\windows"
+.\run-all.bat
+
+STEP A4 (Start Only Background Detector)
+cd "C:\Users\Ayush Iyer\Desktop\Anti Cheat\dist\windows"
+.\run-agent-only.bat
+
+STEP A5 (Stop Background Detector)
+cd "C:\Users\Ayush Iyer\Desktop\Anti Cheat\dist\windows"
+.\stop-agent.bat
+
+STEP A6 (Direct EXE Paths)
+Master Control EXE:
+C:\Users\Ayush Iyer\Desktop\Anti Cheat\dist\windows\AEGISMasterControl\AEGISMasterControl.exe
+
+AntiCheat Agent EXE:
+C:\Users\Ayush Iyer\Desktop\Anti Cheat\dist\windows\agent\AEGISAntiCheatAgent.exe
+
+============================================================
+LIVE DEV MODE (REAL-TIME UI/BACKEND UPDATES, NO HARD REFRESH)
+============================================================
+
+DEV STEP 1 (Terminal 1): Start Backend with Auto-Restart
+cd "C:\Users\Ayush Iyer\Desktop\Anti Cheat\engine"
+.\mvnw spring-boot:run
+
+DEV STEP 2 (Terminal 2): Start Frontend HMR Server
+cd "C:\Users\Ayush Iyer\Desktop\Anti Cheat\anticheat-ui"
+npm install
+npm run dev
+
+DEV STEP 3 (Open UI in Dev Mode)
+http://localhost:5173
+
+DEV STEP 4 (Run Agent as Usual)
+cd "C:\Users\Ayush Iyer\Desktop\Anti Cheat\anticheat-agent-python"
+set AC_SERVER_URL=http://<MAIN_DEVICE_IP>:8080
+python input_capture.py
+
+Notes:
+- In this mode, frontend code changes appear instantly via HMR.
+- Backend Java changes auto-restart with spring-boot-devtools.
+- Use http://localhost:8080 only for packaged/static mode.

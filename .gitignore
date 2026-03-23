@@ -1,0 +1,63 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+anticheat-ui/dist/
+engine/target/
+
+# IDE
+.idea/
+.vscode/
+.vs/
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local environment
+*.local
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Maven wrapper (optional - keep if needed)
+.mvn/wrapper/maven-wrapper.jar
+
+# Build artifacts
+dist/
+
+# UI Snapshots (large, for local rollback only)
+snapshots/
+
+# Data files
+data/
+engine/data/
+
+# ML Engine build artifacts
+ml-engine/build/
+ml-engine/dist/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Static backups (local only)
+engine/src/main/resources/static_backup/
+engine/src/main/resources/static_current/
+anticheat-ui/dist_current/

@@ -1,0 +1,273 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   AEGIS ANTI-CHEAT - APP LAYOUT (CLEAN & PROFESSIONAL)
+   Minimal Design with Red/Orange Accents
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.app-root {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #0f0f1e;
+  color: #e0e0e0;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  position: relative;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  padding: 24px 16px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border-right: 1px solid rgba(255, 10, 84, 0.2);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.logo-badge {
+  background: linear-gradient(135deg, #ff0a54 0%, #ff6a00 100%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 18px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.logo h1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+/* NAVIGATION */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: #a0a0b8;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+  background: rgba(255, 10, 84, 0.1);
+  border-color: rgba(255, 10, 84, 0.2);
+  transform: translateX(2px);
+}
+
+.nav-item.active {
+  color: #ffffff;
+  background: rgba(255, 10, 84, 0.15);
+  border-color: rgba(255, 10, 84, 0.4);
+  font-weight: 600;
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #ff0a54 0%, #ff6a00 100%);
+  border-radius: 0 3px 3px 0;
+}
+
+.nav-item svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* MAIN CONTENT */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #0f0f1e;
+  position: relative;
+  z-index: 1;
+}
+
+.page-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 28px;
+}
+
+/* PAGE STACK - Desktop Lite Mode */
+.page-stack {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.page-stack .page-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.page-stack .page-content.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.page-stack .page-content.inactive {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Scrollbar styling */
+.page-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.page-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.page-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 10, 84, 0.3);
+  border-radius: 4px;
+}
+
+.page-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 10, 84, 0.5);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 220px;
+    padding: 20px 12px;
+  }
+
+  .logo h1 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+    padding: 16px 8px;
+  }
+
+  .logo h1,
+  .nav-item span {
+    display: none;
+  }
+
+  .nav-item {
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .logo {
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .page-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 70px;
+    flex-direction: row;
+    padding: 8px 12px;
+    z-index: 100;
+    border-right: none;
+    border-top: 1px solid rgba(255, 10, 84, 0.2);
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .nav {
+    flex-direction: row;
+    margin-top: 0;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .nav-item {
+    flex-direction: column;
+    padding: 8px;
+    font-size: 10px;
+    gap: 4px;
+  }
+
+  .nav-item svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .nav-item.active::before {
+    display: none;
+  }
+
+  .nav-item.active {
+    background: rgba(255, 10, 84, 0.2);
+  }
+
+  .main {
+    padding-bottom: 70px;
+  }
+
+  .page-content {
+    padding: 16px;
+  }
+}
